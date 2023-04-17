@@ -1,5 +1,3 @@
-import React from "react";
-
 class Api {
     constructor(config) {
         this._baseUrl = config.baseUrl;

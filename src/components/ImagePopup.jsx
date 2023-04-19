@@ -2,7 +2,6 @@ import React from "react";
 
 function ImagePopup({card, onClose}) {
     return (
-        <>
             <div className={`popup popup_image-open image-popup ${card ? "popup_opened" : ""}`}>
                 <div className="popup__container popup__container_image-popup ">
                     <button type="button" className="popup__close" onClick={onClose} aria-label="Зыкрыть форму" />
@@ -10,7 +9,6 @@ function ImagePopup({card, onClose}) {
                     <h2 className="popup__title-image">{card ? card.name : ""}</h2>
                 </div>
             </div>
-        </>
     )
 };
 

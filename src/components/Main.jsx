@@ -22,7 +22,7 @@ function Main({onEditAvatar, onAddPopup, onEditPopup, onCardClick}) {
 
 
     return (
-        <div className="content">
+        <main className="content">
             <section className="profile">
                 <button type="button" className="profile__edit-avatar-button" onClick={onEditAvatar} aria-label="Редактировать аватар">
                     <img src={userAvatar} className="profile__avatar" alt="Аватар" />
@@ -45,7 +45,7 @@ function Main({onEditAvatar, onAddPopup, onEditPopup, onCardClick}) {
                     ))}
                 </ul>
             </section>
-        </div>
+        </main>
     );
 }
 

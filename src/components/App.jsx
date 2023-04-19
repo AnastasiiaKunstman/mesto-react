@@ -10,25 +10,25 @@ import ImagePopup from './ImagePopup';
 function App() {
   
   //попап редактирования профиля
-  const [isEditProfilePopupOpen, setEditOpenPopup] = React.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   //попап добавления новых карточек
-  const [isAddPlacePopupOpen, setEditAddPopup] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   //попап аватара
-  const [isEditAvatarPopupOpen, setAvatarAddPopup] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   //попап увеличения карточки
   const [selectedCard, setSelectedCard] = React.useState(null);
 
 
-  const handleEditProfileClick = () => setEditOpenPopup(true);
-  const handleAddPlaceClick = () => setEditAddPopup(true);
-  const handleEditAvatarClick = () => setAvatarAddPopup(true);
+  const handleEditProfileClick = () => setIsEditProfilePopupOpen(true);
+  const handleAddPlaceClick = () => setIsAddPlacePopupOpen(true);
+  const handleEditAvatarClick = () => setIsEditAvatarPopupOpen(true);
   const handleCardClick = (card) => setSelectedCard(card);
 
   //закрытие всех попапов
   function closeAllPopups() {
-    setEditOpenPopup(false);
-    setEditAddPopup(false);
-    setAvatarAddPopup(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
     setSelectedCard(null)
   };
 
@@ -42,7 +42,7 @@ function App() {
         onCardClick={handleCardClick}
       />
       <Footer />
-      <PopupWithForm isOpen={isEditProfilePopupOpen} name="profile" title="Редактировать профиль" button="Сохранить" onClose={closeAllPopups}>
+      <PopupWithForm isOpen={isEditProfilePopupOpen} name="profile" title="Редактировать профиль" buttonText="Сохранить" onClose={closeAllPopups}>
         <input
           id="input-username"
           required=""
@@ -67,7 +67,7 @@ function App() {
         <span id="input-job-error" className="popup__input-error" />
       </PopupWithForm>
 
-      <PopupWithForm isOpen={isAddPlacePopupOpen} name="card" title="Новое место" button="Сохранить" onClose={closeAllPopups}>
+      <PopupWithForm isOpen={isAddPlacePopupOpen} name="card" title="Новое место" buttonText="Сохранить" onClose={closeAllPopups}>
         <input
           id="input-name"
           required=""
@@ -90,7 +90,7 @@ function App() {
         <span id="input-link-error" className="popup__input-error" />
       </PopupWithForm>
 
-      <PopupWithForm isOpen={isEditAvatarPopupOpen} name="avatar" title="Обновить аватар" button="Сохранить" onClose={closeAllPopups}>
+      <PopupWithForm isOpen={isEditAvatarPopupOpen} name="avatar" title="Обновить аватар" buttonText="Сохранить" onClose={closeAllPopups}>
         <input
           id="input-avatar"
           required=""
@@ -102,7 +102,7 @@ function App() {
         <span id="input-avatar-error" className="popup__input-error" />
       </PopupWithForm>
 
-      <PopupWithForm name="delete" title="Вы уверены?" button="Да" onClose={closeAllPopups}></PopupWithForm>
+      <PopupWithForm name="delete" title="Вы уверены?" buttonText="Да" onClose={closeAllPopups}></PopupWithForm>
 
       <ImagePopup isOpen={selectedCard} card={selectedCard} onClose={closeAllPopups} />
     </>

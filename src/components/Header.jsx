@@ -3,9 +3,9 @@ import headerLogo from '../images/header__logo.svg';
 
 function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <img className="header__logo" src={headerLogo} alt="Логотип" />
-    </div>
+    </header>
   );
 }
 

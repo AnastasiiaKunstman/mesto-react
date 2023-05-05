@@ -32,11 +32,14 @@ class Api {
 
 
     //Редактирование информации о пользователе
-    changeUserInfo(data) {
+    changeUserInfo(name, about) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                name: name,
+                about: about,
+            }),
         }).then(this._checkResponse)
     };
 
@@ -51,11 +54,13 @@ class Api {
     };
 
     //Изменение аватара
-    changeAvatar(data) {
+    changeAvatar(avatar) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                avatar: avatar
+            }),
         }).then(this._checkResponse)
     };
 
@@ -68,20 +73,14 @@ class Api {
     };
 
     //Лайк
-    addLike(cardId) {
+    changeLikeCardStatus(cardId, isLiked) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-            method: 'PUT',
-            headers: this._headers,
-        }).then(this._checkResponse)
-    };
-
-    removeLike(cardId) {
-        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-            method: 'DELETE',
-            headers: this._headers,
+          method: isLiked ? 'PUT' : 'DELETE',
+          headers: this._headers,
         }).then(this._checkResponse)
     };
 };
+
 
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-62',
@@ -90,4 +89,5 @@ const api = new Api({
         'content-type': 'application/json'
     },
 });
+
 export default api;
